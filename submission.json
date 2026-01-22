@@ -1,0 +1,11 @@
+{
+    "rno": 102303754,
+    "model_parameters": {
+        "lambda": 0.003494,
+        "mu": 19.90771,
+        "c": 0.031958
+    },
+    "metadata": {
+        "method": "Levenberg-Marquardt"
+    }
+}
