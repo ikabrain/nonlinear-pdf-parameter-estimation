@@ -102,12 +102,12 @@ The NO2 data exhibits:
 Transform each value `x` into `z` using roll-number-parameterized function:
 
 $$
-z = T_r(x) = x + a_r * sin(b_r * x)
+   z = T_r(x) = x + a_{r}sin(b_{r}x)
 $$
 
 Where:
-- $a_r = 0.05 * (r\mod{7})$
-- $b_r = 0.3 * (r\mod{5} + 1)$
+- $a_r = 0.05\cdot(r\mod{7})$
+- $b_r = 0.3\cdot(r\mod{5} + 1)$
 - $r$ = University Roll Number
 
 **Example Parameters (for roll number 102303754):**
@@ -117,8 +117,9 @@ Where:
 ### Step 3: Parameter Estimation
 
 Target PDF structure:
+
 $$
-\hat{p}(z) = c \cdot e^{-\lambda(z-\mu)^2}
+   \hat{p}(z) = ce^{-\lambda(z-\mu)^2}
 $$
 
 #### Estimation Techniques:
@@ -126,7 +127,10 @@ $$
 1. **Maximum Likelihood Estimation (MLE)**
    - Analytical solution based on normal distribution properties
    - Parameters:
-     - $\hat{\mu}$ = mean(z), $\hat{\sigma}^2$ = var(z), $\hat{\lambda} = \frac{1}{2\hat{\sigma}^2}$, $\hat{c}$ = $\sqrt{\frac{\hat{\lambda}}{\pi}}$
+     - $\hat{\mu}$ = mean(z)
+     - $\hat{\sigma}^2$ = var(z)
+     - $\hat{\lambda}$ = $\frac{1}{2\hat{\sigma}^2}$
+     - $\hat{c}$ = $\sqrt{\frac{\hat{\lambda}}{\pi}}$
 
 2. **Non-linear Curve Fitting**
    - Levenberg-Marquardt algorithm via `scipy.optimize.curve_fit`
@@ -164,7 +168,7 @@ Submit the estimated parameters (λ, μ, c) through:
 ### Submission Format:
 ```json
 {
-  "rno": <your_roll_number>,
+  "rno": <my_roll_number>,
   "model_parameters": {
     "lambda": <estimated_lambda>,
     "mu": <estimated_mu>,
